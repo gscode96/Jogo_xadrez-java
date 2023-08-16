@@ -1,12 +1,14 @@
 package application;
 
-import boardgame.Board;
+import tabuleiro.Tabuleiro;
+import xadrez.PartidaDeXadrez;
 
 public class Program {
 
 	public static void main(String[] args) {
 		
-		Board board = new Board(8, 8);
+		PartidaDeXadrez partidaXadrez = new PartidaDeXadrez();
+		UI.printTabuleiro(partidaXadrez.getPecas());
 		
 
 	}
