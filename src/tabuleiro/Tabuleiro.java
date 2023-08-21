@@ -47,6 +47,23 @@ public class Tabuleiro {
 		peca.posicao = posicao;
 
 	}
+	
+	public Peca removerPeca(Posicao posicao) {
+		//metodo para remover a peca do tabuleiro
+		if (!posicaoExiste(posicao)) {
+			//primeiro verifica se a posicao existe
+			throw new ExcecaoDeTabuleiro("Posição não esta no tabuleiro");
+		} 
+		if (peca(posicao)==null) {
+			//se a posicao da peca for nula retorna nulo
+			return null;
+		}
+		//aqui coloca nulo nas posicoes da peça selecionada
+		Peca aux = peca(posicao);
+		aux.posicao = null;
+		pecas[posicao.getLinha()][posicao.getColuna()] = null;
+		return aux;
+	}
 
 	private boolean posicaoExiste(int linha, int coluna) {
 		// valida se a posicao tem no tamanho do tabuleiro

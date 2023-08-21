@@ -1,7 +1,11 @@
 package application;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import xadrez.Cor;
 import xadrez.PecaDeXadrez;
+import xadrez.PosicaoDeXadrez;
 
 public class UI {
 
@@ -26,6 +30,21 @@ public class UI {
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
 	// clase criada para definir a interface do tabuleiro no console
+
+	public static PosicaoDeXadrez lerPosicao(Scanner sc) {
+		try {
+			String s = sc.nextLine();
+			// coluna na posicao do xadrez é o primeiro caracter por isso 0
+			char coluna = s.charAt(0);
+			// recortando a string para colocar na linha o segundo caracter digitado
+			int linha = Integer.parseInt(s.substring(1));
+			return new PosicaoDeXadrez(coluna, linha);
+		} catch (Exception e) {
+			throw new InputMismatchException("Erro ao ler a posicao. Valor valido somente a1 até h8");
+		}
+
+	}
+
 	public static void printTabuleiro(PecaDeXadrez[][] pecas) {
 		for (int i = 0; i < pecas.length; i++) {
 			System.out.print((8 - i) + " ");
