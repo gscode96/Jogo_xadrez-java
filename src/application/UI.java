@@ -31,6 +31,14 @@ public class UI {
 
 	// clase criada para definir a interface do tabuleiro no console
 
+	// Limpar a tela apos movimentar uma peça
+	public static void limparTela() {
+
+		System.out.print("\033[H\033[2J");
+		System.out.flush();
+
+	}
+
 	public static PosicaoDeXadrez lerPosicao(Scanner sc) {
 		try {
 			String s = sc.nextLine();
